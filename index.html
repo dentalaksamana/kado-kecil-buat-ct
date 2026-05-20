@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Login • Kejutan Buat CT ✨</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #f9f3e6 0%, #ffead4 100%);
+            font-family: 'Segoe UI', 'Poppins', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            max-width: 500px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(2px);
+            border-radius: 48px;
+            padding: 2rem 1.8rem 2.5rem;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 215, 150, 0.5);
+            text-align: center;
+            transition: 0.2s;
+        }
+
+        h1 {
+            font-size: 1.9rem;
+            background: linear-gradient(115deg, #c45c2c, #e68a2e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .sub {
+            font-size: 1rem;
+            color: #b95f2e;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px dotted #ffcd94;
+            display: inline-block;
+            padding-bottom: 6px;
+        }
+
+        .info-box {
+            background: #fff2e2;
+            border-radius: 28px;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-left: 8px solid #f9b23f;
+            text-align: left;
+            color: #5c3b1c;
+        }
+
+        .info-box p {
+            margin: 8px 0;
+            font-weight: 500;
+        }
+
+        .info-box code {
+            background: #ffebcd;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-weight: bold;
+            color: #b9430e;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 18px;
+            margin: 10px 0;
+            border: 2px solid #ffe0b5;
+            border-radius: 60px;
+            font-size: 1rem;
+            background: white;
+            transition: 0.2s;
+            outline: none;
+            font-family: inherit;
+        }
+
+        input:focus {
+            border-color: #f9a826;
+            box-shadow: 0 0 0 3px rgba(249, 168, 38, 0.2);
+        }
+
+        button {
+            background: linear-gradient(95deg, #f9a826, #ffbc6e);
+            border: none;
+            width: 100%;
+            padding: 14px;
+            border-radius: 60px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 12px;
+            color: #2c1a0c;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        button:hover {
+            transform: scale(0.97);
+            background: #f9a826;
+            box-shadow: 0 8px 18px rgba(249, 168, 38, 0.3);
+        }
+
+        .error-msg {
+            color: #dc5f00;
+            background: #fff0e0;
+            padding: 10px;
+            border-radius: 50px;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .hidden-kejutan {
+            display: none;
+            margin-top: 1.8rem;
+            background: #fae6cd;
+            border-radius: 32px;
+            padding: 1.2rem;
+            color: #78481a;
+            animation: naik 0.4s ease;
+        }
+
+        @keyframes naik {
+            from { opacity: 0; transform: translateY(20px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        footer {
+            margin-top: 1.5rem;
+            font-size: 0.7rem;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h1>✨ Hi👋🏼 Zahra Cantiqa (semoga bener ya nama panjangnya hehe) ✨</h1>
+    <div class="sub">login dulu yuk 🎂</div>
+
+    <div class="info-box">
+        <p>📢 hellooooo, usernamenya isi <code>"cantiqaa"</code> dan passwordnya <code>"20mei"</code> yaa!!!</p>
+        <p>🔐 nanti bakal ada kejutan dikit hehe🎁</p>
+    </div>
+
+    <input type="text" id="username" placeholder="username" autocomplete="off">
+    <input type="password" id="password" placeholder="password">
+    <button onclick="handleLogin()">🎈 buka kejutan →</button>
+
+    <div id="errorBox" class="error-msg"></div>
+
+    <div id="surpriseBox" class="hidden-kejutan">
+        ✨🍰✨<br>
+        <strong>🎉 SELAMAT ULANG TAHUN, CANTIQAA! 🎉</strong><br>
+        Kamu berhasil login! 🥳<br>
+        Makasih udah mampir, semoga hari hari kamu selalu dikelilingin sama orang baik terus ya dan semoga kamu selalu dikasih kebahagiaan! 💖<br>
+        — kado kecil ini dari orang baru di hidup kamu tapi semoga yang tadinya orang baru bisa jadi orang lama di hidup kamu hehe 💻
+    </div>
+
+    <footer>💬 masukkan user & password sesuai petunjuk ya</footer>
+</div>
+
+<script>
+    function handleLogin() {
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+        const errorDiv = document.getElementById('errorBox');
+        const surpriseDiv = document.getElementById('surpriseBox');
+
+        // user & password sesuai dengan info di halaman
+        const validUser = "cantiqaa";
+        const validPass = "20mei";
+
+        if (username === validUser && password === validPass) {
+            errorDiv.innerHTML = "";
+            surpriseDiv.style.display = "block";
+            // optional: bisa arahkan ke halaman lain atau sembunyikan form
+            // untuk kesan mirip dengan contoh: tetap di halaman yg sama muncul ucapan
+        } else {
+            errorDiv.innerHTML = "❌ username atau password salah! coba cantiqaa / 20mei ❌";
+            surpriseDiv.style.display = "none";
+        }
+    }
+</script>
+
+</body>
+</html>
